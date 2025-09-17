@@ -306,3 +306,161 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// FAQ Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.innerWidth <= 768) {
+        createMobileFAQ();
+    } else {
+        // Desktop FAQ functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        const faqAnswers = document.querySelectorAll('.faq-answer');
+
+        if (faqQuestions.length > 0) {
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function () {
+                    // Remove active class from all questions
+                    faqQuestions.forEach(q => q.classList.remove('active'));
+
+                    // Hide all answers
+                    faqAnswers.forEach(answer => answer.classList.remove('active'));
+
+                    // Add active class to clicked question
+                    this.classList.add('active');
+
+                    // Show corresponding answer
+                    const answerId = this.getAttribute('data-answer');
+                    const targetAnswer = document.getElementById(answerId);
+
+                    if (targetAnswer) {
+                        targetAnswer.classList.add('active');
+
+                        // Restart cleaning animation
+                        restartCleaningAnimation();
+                    }
+                });
+            });
+        }
+    }
+});
+
+function createMobileFAQ() {
+    const faqContent = document.querySelector('.faq-content');
+    if (!faqContent) return;
+
+    const faqData = [
+        {
+            question: "Angel Temizlik İzmir'de hangi bölgelerde hizmet veriyor?",
+            title: "İzmir Genelinde Hizmet",
+            answer: "Angel Temizlik olarak İzmir'in tüm ilçelerinde profesyonel temizlik hizmeti veriyoruz. Bornova, Karşıyaka, Alsancak, Konak, Balçova, Gaziemir, Buca, Narlıdere ve daha birçok bölgede hizmetinizdeyiz."
+        },
+        {
+            question: "Hangi tür temizlik hizmetleri sunuyorsunuz?",
+            title: "Kapsamlı Temizlik Çözümleri",
+            answer: "Ev temizliği, ofis temizliği, derin temizlik, taşınma temizliği, cam temizliği, halı yıkama, post construction temizlik ve dezenfeksiyon hizmetleri sunuyoruz."
+        },
+        {
+            question: "Temizlik malzemeleriniz güvenli mi?",
+            title: "Güvenli ve Ekolojik Ürünler",
+            answer: "Evet, sadece sertifikalı, çevre dostu ve insan sağlığına zararsız temizlik ürünleri kullanıyoruz. Tüm malzemelerimiz uluslararası kalite standartlarına uygun."
+        },
+        {
+            question: "Randevu nasıl alabilirim?",
+            title: "Kolay Randevu Sistemi",
+            answer: "0536 457 8963 numarından bizi arayabilir, WhatsApp üzerinden yazabilir veya web sitemizdeki iletişim formunu doldurabilirsiniz. 24 saat içinde geri dönüş yapıyoruz."
+        },
+        {
+            question: "Fiyatlandırmanız nasıl?",
+            title: "Şeffaf Fiyatlendırma",
+            answer: "Fiyatlarımız temizlenecek alanın büyüklüğü, temizlik türü ve sıklığına göre belirlenir. Ücretsiz keşif sonrası net fiyat teklifi veriyoruz."
+        },
+        {
+            question: "Sigortalı çalışıyor musunuz?",
+            title: "Tam Güvence",
+            answer: "Evet, ekibimiz sigortalıdır ve tüm işlerimiz garanti kapsamındadır. Herhangi bir zarar durumunda sorumluluğu üstleniriz."
+        },
+        {
+            question: "Düzenli temizlik hizmeti veriyor musunuz?",
+            title: "Düzenli Hizmet Programları",
+            answer: "Haftalık, aylık veya istediğiniz periyotlarda düzenli temizlik hizmeti veriyoruz. Sürekli müşterilerimize özel indirimler uyguluyoruz."
+        },
+        {
+            question: "Gece veya hafta sonu çalışıyor musunuz?",
+            title: "Esnek Çalışma Saatleri",
+            answer: "İhtiyacınıza göre gece saatlerinde ve hafta sonları da hizmet verebiliyoruz. Özellikle ofis temizlikleri için esnek saatlerde çalışıyoruz."
+        }
+    ];
+
+    // Clear existing content and create mobile FAQ
+    faqContent.innerHTML = '';
+
+    faqData.forEach((item, index) => {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'mobile-faq-item';
+
+        faqItem.innerHTML = `
+            <div class="mobile-faq-question" data-index="${index}">
+                <span>${item.question}</span>
+            </div>
+            <div class="mobile-faq-answer">
+                <div class="mobile-faq-answer-content">
+                    <h4>${item.title}</h4>
+                    <p>${item.answer}</p>
+                </div>
+            </div>
+        `;
+
+        faqContent.appendChild(faqItem);
+    });
+
+    // Add click event listeners to mobile FAQ items
+    document.querySelectorAll('.mobile-faq-question').forEach(question => {
+        question.addEventListener('click', function () {
+            const faqItem = this.parentElement;
+            const answer = faqItem.querySelector('.mobile-faq-answer');
+            const isActive = this.classList.contains('active');
+
+            // Close all other items
+            document.querySelectorAll('.mobile-faq-question').forEach(q => {
+                q.classList.remove('active');
+                q.parentElement.querySelector('.mobile-faq-answer').classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!isActive) {
+                this.classList.add('active');
+                answer.classList.add('active');
+            }
+        });
+    });
+}
+
+// Window resize handler for FAQ
+window.addEventListener('resize', function () {
+    if (document.querySelector('.faq-section')) {
+        const currentWidth = window.innerWidth;
+        const isMobile = currentWidth <= 768;
+        const hasMobileFAQ = document.querySelector('.mobile-faq-item');
+
+        // If mobile and no mobile FAQ or desktop and has mobile FAQ, reload
+        if ((isMobile && !hasMobileFAQ) || (!isMobile && hasMobileFAQ)) {
+            location.reload();
+        }
+    }
+});
+
+// Restart cleaning animation function
+function restartCleaningAnimation() {
+    const animationElements = document.querySelectorAll('.bubble, .sparkle, .broom, .spray-bottle, .progress-fill');
+
+    animationElements.forEach(element => {
+        // Remove animation temporarily
+        element.style.animation = 'none';
+
+        // Force reflow
+        element.offsetHeight;
+
+        // Re-add animation
+        element.style.animation = '';
+    });
+}
