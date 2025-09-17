@@ -65,6 +65,18 @@ function createHeader() {
                         <li><a href="ev-temizligi.html" class="nav-link">Ev Temizliği</a></li>
                         <li><a href="ofis-temizligi.html" class="nav-link">Ofis Temizliği</a></li>
                         <li><a href="hali-yikama.html" class="nav-link">Halı Yıkama</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Hizmetlerimiz <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="insaat-sonrasi-temizlik.html" class="dropdown-link">İnşaat Sonrası Temizlik</a></li>
+                                <li><a href="fabrika-temizligi.html" class="dropdown-link">Fabrika Temizliği</a></li>
+                                <li><a href="magaza-temizligi.html" class="dropdown-link">Mağaza Temizliği</a></li>
+                                <li><a href="otel-temizligi.html" class="dropdown-link">Otel Temizliği</a></li>
+                                <li><a href="yangin-sonrasi-temizlik.html" class="dropdown-link">Yangın Sonrası Temizlik</a></li>
+                            </ul>
+                        </li>
                         <li><a href="iletisim.html" class="nav-link">İletişim</a></li>
                     </ul>
                     
@@ -95,6 +107,36 @@ function createHeader() {
         mobileToggle.classList.toggle('active');
     });
 
+    // Dropdown menu functionality
+    const dropdownToggle = header.querySelector('.dropdown-toggle');
+    const dropdown = header.querySelector('.dropdown');
+
+    // Dropdown toggle on click
+    dropdownToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdown.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+
+    // Dropdown hover for desktop
+    dropdown.addEventListener('mouseenter', function () {
+        if (window.innerWidth > 768) {
+            dropdown.classList.add('active');
+        }
+    });
+
+    dropdown.addEventListener('mouseleave', function () {
+        if (window.innerWidth > 768) {
+            dropdown.classList.remove('active');
+        }
+    });
+
     // Aktif sayfa linkini vurgula
     highlightActiveLink();
 }
@@ -111,7 +153,7 @@ function createFooter() {
                         <img src="assets/images/logoMavi.png" alt="Angel Temizlik" class="footer-logo-image">
                     </div>
                     <p class="company-description">
-                        İzmir'in en güvenilir temizlik hizmeti. Ev, ofis ve halı temizliğinde 
+                        İzmir'in en güvenilir temizlik hizmeti. İzmir'in tüm ilçelerinde ev, ofis ve halı temizliğinde 
                         profesyonel çözümler sunuyoruz.
                     </p>
                     <div class="social-links">
@@ -129,16 +171,37 @@ function createFooter() {
                 
                 <!-- Hizmet Verdiğimiz İlçeler -->
                 <div class="footer-section districts-info">
-                    <h4>Hizmet Verdiğimiz İlçeler</h4>
+                    <h4>İzmir'de Hizmet Verdiğimiz İlçeler</h4>
                     <div class="districts-grid">
                         <div class="district-column">
-                            <!-- İlçeler buraya eklenecek -->
+                            <span>Konak</span>
+                            <span>Karşıyaka</span>
+                            <span>Bornova</span>
+                            <span>Bayraklı</span>
+                            <span>Buca</span>
+                            <span>Çiğli</span>
+                            <span>Gaziemir</span>
+                            <span>Balçova</span>
                         </div>
                         <div class="district-column">
-                            <!-- İlçeler buraya eklenecek -->
+                            <span>Narlıdere</span>
+                            <span>Güzelbahçe</span>
+                            <span>Foça</span>
+                            <span>Menemen</span>
+                            <span>Aliağa</span>
+                            <span>Bergama</span>
+                            <span>Tire</span>
+                            <span>Ödemiş</span>
                         </div>
                         <div class="district-column">
-                            <!-- İlçeler buraya eklenecek -->
+                            <span>Torbalı</span>
+                            <span>Selçuk</span>
+                            <span>Menderes</span>
+                            <span>Urla</span>
+                            <span>Çeşme</span>
+                            <span>Seferihisar</span>
+                            <span>Karaburun</span>
+                            <span>+ Diğer İlçeler</span>
                         </div>
                     </div>
                 </div>

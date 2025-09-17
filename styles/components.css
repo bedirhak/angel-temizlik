@@ -209,6 +209,72 @@ body {
     width: 100%;
 }
 
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-toggle i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.active .dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    margin-top: 10px;
+    padding: 10px 0;
+    border: 1px solid #e9ecef;
+}
+
+.dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-link:hover {
+    background: #f8f9fa;
+    color: #007bbf;
+    border-left-color: #007bbf;
+    padding-left: 25px;
+}
+
 /* Contact Info */
 .contact-info {
     display: flex;
@@ -517,6 +583,11 @@ body {
         font-size: 0.75rem;
     }
 
+    .footer-logo,
+    .social-links {
+        justify-content: center;
+    }
+
     .footer-logo-image {
         height: 35px;
     }
@@ -553,6 +624,37 @@ body {
 
     .nav-menu.active {
         transform: translateX(0);
+    }
+
+    /* Mobile dropdown styles */
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: #f8f9fa;
+        border: none;
+        border-radius: 5px;
+        margin: 10px 0;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .dropdown.active .dropdown-menu {
+        max-height: 300px;
+    }
+
+    .dropdown-link {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-toggle {
+        justify-content: space-between;
+        width: 100%;
     }
 
     .contact-info {

@@ -6,7 +6,7 @@ html {
 }
 
 .hero-section {
-    height: 90vh;
+    height: 86vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -382,5 +382,229 @@ html {
     .cta-buttons {
         flex-direction: column;
         align-items: center;
+    }
+}
+
+/* ===================================
+   İZMİR TEMİZLİK FİRMASI SECTION
+   =================================== */
+
+.about-company-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.company-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.company-image {
+    position: relative;
+    padding: 10px;
+    border: 2px solid #007bbf;
+    height: auto;
+    box-sizing: content-box;
+
+}
+
+.company-photo {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.company-photo:hover {
+    transform: scale(1.01);
+}
+
+.company-text h2 {
+    font-size: 2.8rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.company-text p {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+.company-text p:first-of-type {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.company-text p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Mobile responsive for company section */
+@media (max-width: 768px) {
+    .about-company-section {
+        padding: 60px 0;
+    }
+
+    .company-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .company-photo {
+        height: 400px;
+    }
+
+    .company-text h2 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .company-text p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .why-choose-section {
+        padding: 40px 0;
+    }
+}
+
+/* ===================================
+   İZMİR İLÇELERİ SECTION
+   =================================== */
+
+.districts-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.districts-showcase {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.districts-text h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.districts-text p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.main-districts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.district-tag {
+    background: #007bbf;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.district-tag:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+.districts-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.izmir-badge {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, #007bbf, #0056b3);
+    color: white;
+    padding: 40px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 123, 191, 0.3);
+    animation: float 3s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.izmir-badge i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.izmir-badge h4 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.izmir-badge p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Mobile responsive for districts section */
+@media (max-width: 768px) {
+    .districts-showcase {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .districts-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .main-districts {
+        justify-content: center;
+    }
+
+    .izmir-badge {
+        padding: 30px;
+    }
+
+    .izmir-badge i {
+        font-size: 2rem;
+    }
+
+    .izmir-badge h4 {
+        font-size: 1.2rem;
     }
 }

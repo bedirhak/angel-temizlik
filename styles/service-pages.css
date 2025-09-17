@@ -119,6 +119,12 @@
     opacity: 0.9;
 }
 
+.contact-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .contact-btn {
     background: white;
     color: #007bbf;
@@ -130,11 +136,35 @@
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease;
+    justify-content: center;
 }
 
 .contact-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn.emergency {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    animation: pulse 2s infinite;
+}
+
+.contact-btn.emergency:hover {
+    background: linear-gradient(135deg, #c82333, #a71e2a);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 5px 25px rgba(220, 53, 69, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+    }
 }
 
 .price-info {
